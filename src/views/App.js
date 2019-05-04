@@ -1,10 +1,7 @@
 import React from 'react'
 
-import {
-  app,
-  modal,
-  title
-} from './App.module.scss'
+import { app, modal, title } from './App.module.scss'
+import Users from './Users'
 
 const App = () =>
   <div className={app}>
@@ -13,7 +10,7 @@ const App = () =>
     </header>
 
     <section className={modal}>
-
+      <Users />
     </section>
   </div>
 
