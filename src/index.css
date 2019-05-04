@@ -1,6 +1,10 @@
 @import-normalize;
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body {
   background: #555;
   color: #333;
