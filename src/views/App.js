@@ -2,26 +2,19 @@ import React from 'react'
 
 import {
   app,
-  appLogo,
-  appHeader,
-  appLink
+  modal,
+  title
 } from './App.module.scss'
 
 const App = () =>
   <div className={app}>
-    <header className={appHeader}>
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className={appLink}
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+    <header>
+      <h1 className={title}>Fuzzy wuzzy!</h1>
     </header>
+
+    <section className={modal}>
+
+    </section>
   </div>
 
 export default App
