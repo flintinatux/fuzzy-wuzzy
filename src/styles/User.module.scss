@@ -1,0 +1,31 @@
+@import './vars.scss';
+
+.td {
+  border-bottom: 1px solid $gray-90;
+  padding: .5rem 0;
+}
+
+.td1 {
+  @extend .td;
+  flex: 1;
+}
+
+.td2 {
+  @extend .td;
+  flex: 2;
+}
+
+.td4 {
+  @extend .td;
+  flex: 4;
+}
+
+.tr {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+
+  &:hover {
+    background: $gray-98;
+  }
+}

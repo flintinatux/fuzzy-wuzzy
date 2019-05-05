@@ -1,0 +1,30 @@
+@import './vars.scss';
+
+.th {
+  border-bottom: 1px solid $gray-95;
+  padding: .5rem 0;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.th1 {
+  @extend .th;
+  flex: 1;
+}
+
+.th2 {
+  @extend .th;
+  flex: 2;
+}
+
+.th4 {
+  @extend .th;
+  flex: 4;
+}
+
+.tr {
+  display: flex;
+  font-weight: bold;
+  justify-content: stretch;
+  width: 100%;
+}

@@ -2,7 +2,7 @@ import { action, error, handle, onSuccess } from '@articulate/ducks'
 import tinygen from 'tinygen'
 
 import {
-  compose, join, map, merge, prop, slice, sortBy, values
+  compose, join, map, merge, pipe, prop, props, slice, sortBy
 } from 'tinyfunk'
 
 const FETCH_USERS = 'FETCH_USERS'
@@ -16,7 +16,17 @@ export const init = {
 }
 
 const searchText =
-  compose(join(' '), values)
+  pipe(
+    props([
+      'first_name',
+      'last_name',
+      'address',
+      'city',
+      'state',
+      'zip'
+    ]),
+    join(' ')
+  )
 
 const indexForSearch = user =>
   merge(user, {

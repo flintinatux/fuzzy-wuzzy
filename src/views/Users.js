@@ -3,10 +3,11 @@ import { useReducer } from 'reinspect'
 
 import reducer, { fetchUsers, init } from '../ducks/Users'
 import User from './User'
+import UsersHeader from './UsersHeader'
 
 import {
-  search, searchInput, userList, userTable
-} from './Users.module.scss'
+  search, searchInput, table, thead, tbody, userList
+} from '../styles/Users.module.scss'
 
 const Users = () => {
   const [ state, dispatch ] = useReducer(reducer, init, 'Users')
@@ -25,8 +26,14 @@ const Users = () => {
       </div>
 
       <div className={userList}>
-        <table className={userTable}>
-          <tbody>
+        <table
+          cellSpacing="0"
+          className={table}
+        >
+          <thead className={thead}>
+            <UsersHeader {...state.results[0]} />
+          </thead>
+          <tbody className={tbody}>
             { state.results.map(User) }
           </tbody>
         </table>

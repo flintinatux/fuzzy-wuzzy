@@ -1,0 +1,42 @@
+@import './vars.scss';
+
+.search {
+  flex: 0;
+  padding: 0 3rem 1rem;
+}
+
+.searchInput {
+  background: none;
+  border: none;
+  border-bottom: 1px solid $gray-90;
+  color: $gray-20;
+  font-size: 1.4rem;
+  outline: none;
+  padding: 0 0 1rem;
+  width: 100%;
+}
+
+.table {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: stretch;
+  min-width: 90rem;
+}
+
+.tbody {
+  flex: 2;
+  overflow-y: auto;
+  padding: 0 3rem 2rem;
+}
+
+.thead {
+  flex: 0;
+  padding: 0 3rem;
+}
+
+.userList {
+  flex: 2;
+  overflow-x: auto;
+}

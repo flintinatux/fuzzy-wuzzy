@@ -1,0 +1,28 @@
+@import './vars.scss';
+
+.app {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: stretch;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 120rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  overflow-y: hidden;
+}
+
+.header {
+  padding: 2rem 3rem;
+}
+
+.title {
+  flex-shrink: 0;
+  font-size: 2rem;
+}
