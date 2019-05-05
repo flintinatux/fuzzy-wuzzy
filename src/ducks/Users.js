@@ -1,8 +1,8 @@
 import { action, error, handle, onSuccess } from '@articulate/ducks'
+import tinygen from 'tinygen'
 
 import {
-  assoc, compose, converge, identity, join, map, merge,
-  prop, slice, sortBy, values
+  compose, join, map, merge, prop, slice, sortBy, values
 } from 'tinyfunk'
 
 const FETCH_USERS = 'FETCH_USERS'
@@ -18,8 +18,11 @@ export const init = {
 const searchText =
   compose(join(' '), values)
 
-const indexForSearch =
-  converge(assoc('search'), [ searchText, identity ])
+const indexForSearch = user =>
+  merge(user, {
+    id: tinygen(6),
+    search: searchText(user)
+  })
 
 const paginate = ({ list, page }) => {
   const lo = page * pageSize

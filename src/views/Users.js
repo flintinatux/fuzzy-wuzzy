@@ -2,8 +2,11 @@ import React, { Fragment, useEffect } from 'react'
 import { useReducer } from 'reinspect'
 
 import reducer, { fetchUsers, init } from '../ducks/Users'
-import { search, searchInput, userList } from './Users.module.scss'
 import User from './User'
+
+import {
+  search, searchInput, userList, userTable
+} from './Users.module.scss'
 
 const Users = () => {
   const [ state, dispatch ] = useReducer(reducer, init, 'Users')
@@ -22,7 +25,11 @@ const Users = () => {
       </div>
 
       <div className={userList}>
-        { state.results.map(User) }
+        <table className={userTable}>
+          <tbody>
+            { state.results.map(User) }
+          </tbody>
+        </table>
       </div>
     </Fragment>
   )

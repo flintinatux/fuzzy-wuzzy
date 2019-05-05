@@ -1,0 +1,11 @@
+@import '../styles/vars.scss';
+
+.td {
+  padding: .5rem;
+}
+
+.tr {
+  &:nth-child(2n+1) {
+    background: $gray-90;
+  }
+}

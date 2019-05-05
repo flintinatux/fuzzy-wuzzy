@@ -2,6 +2,7 @@
 
 .search {
   flex-shrink: 0;
+  padding-bottom: 1rem;
 }
 
 .searchInput {
@@ -18,4 +19,8 @@
 .userList {
   flex-grow: 2;
   overflow-y: auto;
+}
+
+.userTable {
+  width: 100%;
 }
