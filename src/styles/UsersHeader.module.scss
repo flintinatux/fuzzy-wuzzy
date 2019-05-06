@@ -1,7 +1,7 @@
 @import './common/vars.scss';
 
 .th {
-  border-bottom: 1px solid $gray-95;
+  border-bottom: $border;
   padding: .5rem 0;
   text-align: left;
   text-transform: capitalize;

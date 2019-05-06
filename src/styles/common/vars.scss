@@ -17,20 +17,4 @@ $gray-95: lighten($gray-base, 95%);
 $gray-98: lighten($gray-base, 98%);
 $gray-99: lighten($gray-base, 99%);
 
-$blue: #245da1;
-$blue-dark: #1f4f89;
-$red: #f00;
-$white: #fff;
-
-// basics
-
-$timing: .3s;
-
-// break points
-
-$sm-max: 480px;
-$md-min: ($sm-max + 1);
-$md-max: 768px;
-$lg-min: ($md-max + 1);
-$lg-max: 1200px;
-$xl-min: ($lg-max + 1);
+$border: 1px solid $gray-90;
