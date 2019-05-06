@@ -2,14 +2,13 @@ import { action, error, handle, onSuccess } from '@articulate/ducks'
 import tinygen from 'tinygen'
 
 import {
-  compose, map, merge, nAry, pick, pipe, prop, slice, sortBy
+  compose, map, merge, nAry, pick, pipe, prop, sortBy
 } from 'tinyfunk'
 
 import assocWith from '../lib/assocWith'
 import fuzzy from '../lib/fuzzy'
 
 export const FETCH_USERS  = 'FETCH_USERS'
-export const PAGE_SIZE    = 25
 export const SEARCH_USERS = 'SEARCH_USERS'
 
 export const init = {
@@ -26,17 +25,8 @@ const clean =
   pick(['first_name', 'last_name', 'address', 'city', 'state', 'zip'])
 
 const loadUsers = (state, users) => {
-  const { page } = state
   const list = parseUsers(users)
-
-  return merge(state, { list, results: paginate({ list, page }) })
-}
-
-const paginate = ({ list, page }) => {
-  const lo = page * PAGE_SIZE
-  const hi = lo + PAGE_SIZE
-
-  return slice(lo, hi, list)
+  return merge(state, { list, results: list })
 }
 
 const parseUsers =
@@ -45,13 +35,12 @@ const parseUsers =
     sortBy(prop('first_name'))
   )
 
-const performSearch = (state, query) => {
-  const list = fuzzy(query)(state.list)
-  const page = 0
-  const results = paginate({ list, page })
-
-  return merge(state, { page, query, results })
-}
+const performSearch = (state, query) =>
+  merge(state, {
+    page: 0,
+    query,
+    results: fuzzy(query)(state.list)
+  })
 
 export default handle(init, {
   [ FETCH_USERS  ]: onSuccess(loadUsers),

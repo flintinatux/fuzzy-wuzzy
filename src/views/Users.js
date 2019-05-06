@@ -1,9 +1,9 @@
 import { compose } from 'tinyfunk'
-import React, { Fragment, useEffect } from 'react'
-import { useReducer } from 'reinspect'
+import React, { Fragment } from 'react'
 
+import { paginate } from '../lib/pagination'
 import Pagination from './Pagination'
-import reducer, { fetchUsers, init, searchUsers } from '../ducks/Users'
+import { searchUsers } from '../ducks/App'
 import targetVal from '../lib/targetVal'
 import User from './User'
 import UsersHeader from './UsersHeader'
@@ -12,11 +12,8 @@ import {
   searchBar, searchInput, table, thead, tbody, userList
 } from '../styles/Users.module.scss'
 
-const Users = () => {
-  const [ state, dispatch ] = useReducer(reducer, init, 'Users')
-
-  // eslint-disable-next-line
-  useEffect(() => { fetchUsers().then(dispatch) }, [ true ])
+const Users = props => {
+  const { dispatch, query, results } = props
 
   const search =
     compose(dispatch, searchUsers, targetVal)
@@ -29,10 +26,10 @@ const Users = () => {
           className={searchInput}
           onChange={search}
           placeholder="Search by anything!"
-          value={state.query}
+          value={query}
         />
 
-        <Pagination {...state} />
+        <Pagination {...props} />
       </div>
 
       <div className={userList}>
@@ -41,10 +38,10 @@ const Users = () => {
           className={table}
         >
           <thead className={thead}>
-            <UsersHeader {...state.results[0]} />
+            <UsersHeader {...results[0]} />
           </thead>
           <tbody className={tbody}>
-            { state.results.map(User) }
+            { paginate(props).map(User) }
           </tbody>
         </table>
       </div>
