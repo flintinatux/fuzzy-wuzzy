@@ -1,0 +1,27 @@
+@import './common/vars.scss';
+
+.buddon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+  height: 3rem;
+  outline: none;
+  width: 3rem;
+
+  &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  margin-left: 2rem;
+  white-space: nowrap;
+  width: 16rem;
+}
