@@ -59,7 +59,7 @@ export default handle(init, {
 })
 
 export const fetchUsers = () =>
-  fetch('users.json')
+  fetch(`${process.env.PUBLIC_URL}/users.json`)
     .then(res => res.json())
     .then(
       action(FETCH_USERS),
