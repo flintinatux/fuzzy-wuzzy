@@ -2,6 +2,7 @@ import { compose } from 'tinyfunk'
 import React, { Fragment, useEffect } from 'react'
 import { useReducer } from 'reinspect'
 
+import Pagination from './Pagination'
 import reducer, { fetchUsers, init, searchUsers } from '../ducks/Users'
 import targetVal from '../lib/targetVal'
 import User from './User'
@@ -30,6 +31,8 @@ const Users = () => {
           placeholder="Search by anything!"
           value={state.query}
         />
+
+        <Pagination {...state} />
       </div>
 
       <div className={userList}>

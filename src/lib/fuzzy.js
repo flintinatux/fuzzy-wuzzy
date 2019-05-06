@@ -5,15 +5,13 @@ import {
 } from 'tinyfunk'
 
 import assocWith from './assocWith'
+import max from './max'
 
 const FUZZINESS = 0.1
 const MIN_SCORE = 0.3
 
 const addScore = query =>
   assocWith('score', reduceObj(maxScore(query), -Infinity))
-
-const max = (a, b) =>
-  a > b ? a : b
 
 const maxScore = query => (current, val) =>
   max(current, score(String(val), query, FUZZINESS))

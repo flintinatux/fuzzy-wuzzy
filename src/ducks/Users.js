@@ -8,10 +8,9 @@ import {
 import assocWith from '../lib/assocWith'
 import fuzzy from '../lib/fuzzy'
 
-const pageSize = 50
-
-const FETCH_USERS  = 'FETCH_USERS'
-const SEARCH_USERS = 'SEARCH_USERS'
+export const FETCH_USERS  = 'FETCH_USERS'
+export const PAGE_SIZE    = 25
+export const SEARCH_USERS = 'SEARCH_USERS'
 
 export const init = {
   list: [],
@@ -34,8 +33,8 @@ const loadUsers = (state, users) => {
 }
 
 const paginate = ({ list, page }) => {
-  const lo = page * pageSize
-  const hi = lo + pageSize
+  const lo = page * PAGE_SIZE
+  const hi = lo + PAGE_SIZE
 
   return slice(lo, hi, list)
 }

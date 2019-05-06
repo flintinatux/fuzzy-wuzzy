@@ -1,7 +1,9 @@
 @import './vars.scss';
 
 .searchBar {
+  display: flex;
   flex: 0;
+  justify-content: space-between;
   padding: 0 3rem 1rem;
 }
 
@@ -10,10 +12,11 @@
   border: none;
   border-bottom: 1px solid $gray-90;
   color: $gray-20;
+  flex: 2;
   font-size: 1.4rem;
+  max-width: 50rem;
   outline: none;
   padding: 0 0 1rem;
-  width: 100%;
 }
 
 .table {
