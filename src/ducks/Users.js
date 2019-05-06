@@ -2,11 +2,16 @@ import { action, error, handle, onSuccess } from '@articulate/ducks'
 import tinygen from 'tinygen'
 
 import {
-  compose, join, map, merge, pipe, prop, props, slice, sortBy
+  compose, map, merge, nAry, pick, pipe, prop, slice, sortBy
 } from 'tinyfunk'
 
-const FETCH_USERS = 'FETCH_USERS'
+import assocWith from '../lib/assocWith'
+import fuzzy from '../lib/fuzzy'
+
 const pageSize = 50
+
+const FETCH_USERS  = 'FETCH_USERS'
+const SEARCH_USERS = 'SEARCH_USERS'
 
 export const init = {
   list: [],
@@ -15,24 +20,18 @@ export const init = {
   results: []
 }
 
-const searchText =
-  pipe(
-    props([
-      'first_name',
-      'last_name',
-      'address',
-      'city',
-      'state',
-      'zip'
-    ]),
-    join(' ')
-  )
+const addId =
+  assocWith('id', nAry(0, tinygen))
 
-const indexForSearch = user =>
-  merge(user, {
-    id: tinygen(6),
-    search: searchText(user)
-  })
+const clean =
+  pick(['first_name', 'last_name', 'address', 'city', 'state', 'zip'])
+
+const loadUsers = (state, users) => {
+  const { page } = state
+  const list = parseUsers(users)
+
+  return merge(state, { list, results: paginate({ list, page }) })
+}
 
 const paginate = ({ list, page }) => {
   const lo = page * pageSize
@@ -42,17 +41,22 @@ const paginate = ({ list, page }) => {
 }
 
 const parseUsers =
-  compose(sortBy(prop('first_name')), map(indexForSearch))
+  pipe(
+    map(compose(addId, clean)),
+    sortBy(prop('first_name'))
+  )
 
-const loadUsers = (state, users) => {
-  const { page } = state
-  const list = parseUsers(users)
+const performSearch = (state, query) => {
+  const list = fuzzy(query)(state.list)
+  const page = 0
+  const results = paginate({ list, page })
 
-  return merge(state, { list, results: paginate({ list, page }) })
+  return merge(state, { page, query, results })
 }
 
 export default handle(init, {
-  [ FETCH_USERS ]: onSuccess(loadUsers)
+  [ FETCH_USERS  ]: onSuccess(loadUsers),
+  [ SEARCH_USERS ]: performSearch
 })
 
 export const fetchUsers = () =>
@@ -62,3 +66,5 @@ export const fetchUsers = () =>
       action(FETCH_USERS),
       error(FETCH_USERS)
     )
+
+export const searchUsers = action(SEARCH_USERS)

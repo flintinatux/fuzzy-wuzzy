@@ -30,6 +30,7 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
     "reinspect": "^1.0.1",
+    "string-score": "^1.0.1",
     "tinyfunk": "^1.7.0",
     "tinygen": "^0.2.0"
   }

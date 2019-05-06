@@ -1,12 +1,14 @@
+import { compose } from 'tinyfunk'
 import React, { Fragment, useEffect } from 'react'
 import { useReducer } from 'reinspect'
 
-import reducer, { fetchUsers, init } from '../ducks/Users'
+import reducer, { fetchUsers, init, searchUsers } from '../ducks/Users'
+import targetVal from '../lib/targetVal'
 import User from './User'
 import UsersHeader from './UsersHeader'
 
 import {
-  search, searchInput, table, thead, tbody, userList
+  searchBar, searchInput, table, thead, tbody, userList
 } from '../styles/Users.module.scss'
 
 const Users = () => {
@@ -15,13 +17,18 @@ const Users = () => {
   // eslint-disable-next-line
   useEffect(() => { fetchUsers().then(dispatch) }, [ true ])
 
+  const search =
+    compose(dispatch, searchUsers, targetVal)
+
   return (
     <Fragment>
-      <div className={search}>
+      <div className={searchBar}>
         <input
           autoFocus
           className={searchInput}
+          onChange={search}
           placeholder="Search by anything!"
+          value={state.query}
         />
       </div>
 
