@@ -2,7 +2,7 @@
 
 I wanted to try my hand at client-side fuzzy-searching and React's [`useReducer`](https://devdocs.io/react/hooks-reference#usereducer), so I put together this demo app over the weekend.
 
-It's a fictitious list of users' names and addresses.  The sample data I found [here](https://www.briandunning.com/sample-data/) and converted from CSV to JSON to simulate a backend API.  Feel free to try out the hosted version at the link below:
+The app is a fictitious list of users' names and addresses.  The sample data I found [here](https://www.briandunning.com/sample-data/) and converted from CSV to JSON to simulate a backend API.  Feel free to try out the hosted version at the link below:
 
 https://flintinatux.github.io/fuzzy-wuzzy
 
