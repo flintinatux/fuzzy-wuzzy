@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/fuzzy-wuzzy/static/css/main.e0ce0924.chunk.css",
+    "main.js": "/fuzzy-wuzzy/static/js/main.f6c44774.chunk.js",
+    "main.js.map": "/fuzzy-wuzzy/static/js/main.f6c44774.chunk.js.map",
+    "runtime~main.js": "/fuzzy-wuzzy/static/js/runtime~main.8e55a47f.js",
+    "runtime~main.js.map": "/fuzzy-wuzzy/static/js/runtime~main.8e55a47f.js.map",
+    "static/js/2.97af6de4.chunk.js": "/fuzzy-wuzzy/static/js/2.97af6de4.chunk.js",
+    "static/js/2.97af6de4.chunk.js.map": "/fuzzy-wuzzy/static/js/2.97af6de4.chunk.js.map",
+    "index.html": "/fuzzy-wuzzy/index.html",
+    "precache-manifest.5a03fe2a0d0eacdd5fb4582e59af8e71.js": "/fuzzy-wuzzy/precache-manifest.5a03fe2a0d0eacdd5fb4582e59af8e71.js",
+    "service-worker.js": "/fuzzy-wuzzy/service-worker.js",
+    "static/css/main.e0ce0924.chunk.css.map": "/fuzzy-wuzzy/static/css/main.e0ce0924.chunk.css.map"
+  }
+}
