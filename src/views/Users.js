@@ -3,13 +3,14 @@ import React, { Fragment } from 'react'
 
 import { paginate } from '../lib/pagination'
 import Pagination from './Pagination'
+import SearchIcon from './SearchIcon'
 import { searchUsers } from '../ducks/App'
 import targetVal from '../lib/targetVal'
 import User from './User'
 import UsersHeader from './UsersHeader'
 
 import {
-  searchBar, searchInput, table, thead, tbody, userList
+  searchBar, searchInput, searchWrapper, table, thead, tbody, userList
 } from '../styles/Users.module.scss'
 
 const Users = props => {
@@ -21,13 +22,18 @@ const Users = props => {
   return (
     <Fragment>
       <div className={searchBar}>
-        <input
-          autoFocus
-          className={searchInput}
-          onChange={search}
-          placeholder="Search by anything!"
-          value={query}
-        />
+        <div className={searchWrapper}>
+          <input
+            autoFocus
+            className={searchInput}
+            onChange={search}
+            placeholder="Search by anything!"
+            type="search"
+            value={query}
+          />
+
+          <SearchIcon />
+        </div>
 
         <Pagination {...props} />
       </div>

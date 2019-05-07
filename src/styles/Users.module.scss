@@ -12,11 +12,17 @@
   border: none;
   border-bottom: $border;
   color: $gray-20;
-  flex: 2;
   font-size: 1.4rem;
-  max-width: 50rem;
+  height: 100%;
+  width: 100%;
   outline: none;
-  padding: 0 0 1rem;
+  padding: 0 0 0 2.2rem;
+}
+
+.searchWrapper {
+  flex: 2;
+  max-width: 30rem;
+  position: relative;
 }
 
 .table {

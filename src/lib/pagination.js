@@ -4,8 +4,8 @@ import min from './min'
 
 export const PAGE_SIZE = 25
 
-export const first = ({ page }) =>
-  page * PAGE_SIZE + 1
+export const first = ({ page, results }) =>
+  results.length ? page * PAGE_SIZE + 1 : 0
 
 export const last = ({ page, results }) =>
   min(results.length, (page + 1) * PAGE_SIZE)
